@@ -1,42 +1,29 @@
 # 🤖 AI Resume Checker
 
-An AI-powered Resume Checker built using the **MERN Stack** and **Google Gemini AI**.
-
-Upload your resume in PDF format, get an ATS score, identify weak areas, improve resume bullet points using AI, and save multiple resume versions.
+An AI-powered Resume Checker built with the **MERN Stack** and **Google Gemini AI**. Upload a resume, get an instant ATS score, discover missing keywords and weak areas, let AI rewrite weak bullet points, and track improvement across multiple resume versions.
 
 ---
 
-
----
-
-# 🚀 Features
+## 🚀 Features
 
 ### 🔐 Authentication
-- Register and Login
-- JWT Authentication
-- Secure httpOnly Cookies
-- Password Encryption using bcrypt
+- Register & Login
+- JWT Authentication with secure httpOnly cookies
+- Password encryption using bcrypt
+- Protected routes (frontend & backend)
 
 ### 📄 Resume Upload
-- Upload Resume (PDF only)
-- Maximum File Size: 5 MB
-- PDF Validation
+- PDF-only upload with validation
+- 5 MB file size limit
+- Scanned/non-text PDF detection
 
 ### 📑 Resume Parsing
-- Extract text from PDF
-- Detect scanned PDFs
-- Convert resume into structured data using Gemini AI
-
-Sections extracted:
-- Personal Information
-- Experience
-- Education
-- Skills
-- Projects
-- Certifications
+- Text extraction from PDF using `pdf-parse`
+- Structured data extraction via Google Gemini AI
+- Sections parsed: Personal Info, Experience, Education, Skills, Projects, Certifications
 
 ### 📊 ATS Resume Score
-AI provides:
+AI-generated scoring across:
 - Overall ATS Score
 - Keyword Score
 - Formatting Score
@@ -44,39 +31,37 @@ AI provides:
 - Clarity Score
 
 ### 💡 AI Suggestions
-- Resume Strengths
-- Resume Weaknesses
-- Improvement Tips
+- Resume strengths
+- Resume weaknesses
+- Actionable improvement tips
 
 ### ✍️ AI Rewrite
-AI improves weak resume bullet points by:
-- Making them ATS-friendly
-- Adding action verbs
-- Improving readability
+AI rewrites weak bullet points to be:
+- ATS-friendly
+- Action-verb driven
+- More readable and impactful
 
 ### 🔍 Keyword Analysis
-Shows:
-- Existing Keywords
-- Missing Keywords
+- Keywords present in the resume
+- Keywords missing (with frequency-based ranking)
 
 ### 📝 Resume Versions
-- Save every resume version
-- Create new version after AI rewrite
-- Compare versions
+- Every upload and rewrite is saved as a version
+- Full version history per resume
+- Side-by-side version comparison (diff viewer)
 
 ### 📈 Dashboard
-Shows:
-- Total Resumes
-- Latest Resume
-- ATS Score Chart
-- Activity Feed
+- Total resumes, rewrites, analyses & exports
+- Latest resume snapshot
+- ATS score trend (sparkline charts)
+- Recent activity feed (uploads, rewrites, analyses)
 
-### 📊 Insights
-- Average Score
-- Best Score
-- Score Trend
-- Common Issues
-- Missing Keywords
+### 📊 Insights & Analytics
+- Average & best ATS score
+- Score trend over time
+- Most common resume issues
+- Most frequent missing/present keywords
+- Per-resume performance breakdown
 
 ### 🌙 Theme
 - Light Mode
@@ -84,49 +69,41 @@ Shows:
 
 ---
 
-# 🛠 Tech Stack
+## 🛠 Tech Stack
 
-## Frontend
-
-- React.js
-- Vite
+**Frontend**
+- React.js (Vite)
 - Tailwind CSS
 - shadcn/ui
 - React Router
 - Axios
 
-## Backend
-
+**Backend**
 - Node.js
 - Express.js
 - MongoDB
 - Mongoose
 
-## AI
-
+**AI**
 - Google Gemini AI
 
-## Authentication
-
+**Auth**
 - JWT
 - bcrypt
 
-## Other Packages
-
-- Multer
-- pdf-parse
-- Zod
+**Other**
+- Multer (file uploads)
+- pdf-parse (PDF text extraction)
+- Zod (schema validation)
 
 ---
 
-# 📂 Project Structure
+## 📂 Project Structure
 
 ```
 AI-Resume-Checker
-
 ├── backend
 │   ├── config
-│   ├── controllers
 │   ├── middleware
 │   ├── models
 │   ├── routes
@@ -135,33 +112,38 @@ AI-Resume-Checker
 │   └── server.js
 │
 ├── frontend
-│   ├── components
-│   ├── pages
-│   ├── context
-│   ├── api
-│   └── App.jsx
+│   └── src
+│       ├── api
+│       ├── assets
+│       ├── components
+│       ├── context
+│       ├── hooks
+│       ├── lib
+│       ├── pages
+│       ├── App.jsx
+│       ├── main.jsx
+│       └── routes.jsx
 │
 └── README.md
 ```
 
 ---
 
-# ⚙️ Installation
+## ⚙️ Installation
 
-## 1 Clone Repository
-
+### 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/AI-Resume-Checker.git
-```
-
-```bash
+git clone https://github.com/bhaveshpa1234/AI-Resume-Checker.git
 cd AI-Resume-Checker
 ```
 
----
+### 2. Install backend dependencies
+```bash
+cd backend
+npm install
+```
 
-## 2 Install Frontend
-
+### 3. Install frontend dependencies
 ```bash
 cd frontend
 npm install
@@ -169,149 +151,85 @@ npm install
 
 ---
 
-## 3 Install Backend
+## 🔑 Environment Variables
 
-```bash
-cd backend
-npm install
-```
-
----
-
-# 🔑 Environment Variables
-
-Create a `.env` file inside the backend folder.
+Create a `.env` file inside the `backend` folder:
 
 ```env
 PORT=5000
-
 MONGO_URI=your_mongodb_connection
-
 JWT_SECRET=your_secret_key
-
 GEMINI_API_KEY=your_gemini_api_key
-
 CLIENT_URL=http://localhost:5173
 ```
 
 ---
 
-# ▶️ Run Project
+## ▶️ Run the Project
 
-## Start Backend
-
+**Start Backend**
 ```bash
 cd backend
 npm run dev
 ```
+Runs on → `http://localhost:5000`
 
-Backend runs on
-
-```
-http://localhost:5000
-```
-
----
-
-## Start Frontend
-
+**Start Frontend**
 ```bash
 cd frontend
 npm run dev
 ```
-
-Frontend runs on
-
-```
-http://localhost:5173
-```
+Runs on → `http://localhost:5173`
 
 ---
 
-# 📖 How It Works
+## 📖 How It Works
 
-### Step 1
-
-Register or Login.
-
-↓
-
-### Step 2
-
-Upload your Resume PDF.
-
-↓
-
-### Step 3
-
-Text is extracted from the PDF.
-
-↓
-
-### Step 4
-
-Gemini AI analyzes the resume.
-
-↓
-
-### Step 5
-
-ATS Score is generated.
-
-↓
-
-### Step 6
-
-AI finds strengths and weaknesses.
-
-↓
-
-### Step 7
-
-AI rewrites weak bullet points.
-
-↓
-
-### Step 8
-
-Save as a new resume version.
-
-↓
-
-### Step 9
-
-Compare different resume versions.
+1. **Register / Login** — secure JWT-based authentication.
+2. **Upload Resume** — PDF is validated and stored.
+3. **Text Extraction** — resume text is pulled from the PDF.
+4. **AI Analysis** — Gemini AI parses and scores the resume.
+5. **ATS Score Generated** — overall + sub-scores calculated.
+6. **Strengths & Weaknesses** — AI highlights what's working and what isn't.
+7. **AI Rewrite** — weak bullet points are rewritten for impact.
+8. **New Version Saved** — every rewrite creates a new resume version.
+9. **Compare Versions** — track improvement across versions and analyses.
 
 ---
 
+## 📌 API Overview
 
-
-
----
-
-# 🔮 Future Improvements
-
-- Resume Templates
-- Job Description Matching
-- Download Improved Resume
-- Cover Letter Generator
-- Multi-language Support
-- Interview Preparation Suggestions
+| Module | Base Route | Description |
+|---|---|---|
+| Auth | `/api/auth` | Register, login, logout, profile |
+| Resumes | `/api/resumes` | Upload, list, analyze, rewrite, diff |
+| Dashboard | `/api/dashboard` | Totals, latest resume, score trend, KPIs, activity |
+| Insights | `/api/insights` | Average/best score, top issues, keyword frequency |
+| Versions | `/api/versions` | Full version history across all resumes |
+| History | `/api/history` | Unified activity timeline (uploads, rewrites, analyses) |
 
 ---
 
-# 👨‍💻 Author
+## 🔮 Future Improvements
+
+- Resume templates
+- Job description matching
+- Downloadable optimized resume (PDF export)
+- Cover letter generator
+- Multi-language support
+- Interview preparation suggestions
+
+---
+
+## 👨‍💻 Author
 
 **Bhavesh Parmar**
-
-GitHub:
-https://github.com/bhaveshpa1234
-
+GitHub: [bhaveshpa1234](https://github.com/bhaveshpa1234)
 
 ---
 
-# ⭐ Support
+## ⭐ Support
 
-If you like this project, give it a ⭐ on GitHub.
+If you found this project useful, consider giving it a ⭐ on GitHub.
 
 Happy Coding! 🚀

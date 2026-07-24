@@ -9,6 +9,11 @@ const { notFound, errorHandler } = require("./middleware/errorHandler");
 
 const healthRouter = require("./routes/health");
 const authRouter = require("./routes/auth");
+const resumeRouter = require("./routes/resumes");
+const dashboardRouter = require("./routes/dashboard");
+const insightsRouter = require("./routes/insights");
+const versionsRouter = require("./routes/versions");
+const historyRouter = require("./routes/history");
 
 const app = express();
 
@@ -18,7 +23,7 @@ app.use(
   cors({
     origin: true, // reflect request origin - allows everything while keeping credentials working
     credentials: true,
-  })
+  }),
 );
 
 app.use(express.json({ limit: "1mb" }));
@@ -31,6 +36,11 @@ if (!env.isProd) {
 
 app.use("/api/health", healthRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/resumes", resumeRouter);
+app.use("/api/dashboard", dashboardRouter);
+app.use("/api/insights", insightsRouter);
+app.use("/api/versions", versionsRouter);
+app.use("/api/history", historyRouter);
 
 app.use(notFound);
 app.use(errorHandler);
@@ -41,7 +51,7 @@ async function start() {
 
     app.listen(env.port, () => {
       console.log(
-        `Server listening on http://localhost:${env.port} (${env.nodeEnv})`
+        `Server listening on http://localhost:${env.port} (${env.nodeEnv})`,
       );
     });
   } catch (err) {

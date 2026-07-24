@@ -112,7 +112,9 @@ const validator = z.object({
       .array(z.object({ label: z.string(), url: z.string() }))
       .default([]),
   }),
+
   summary: z.string().default(""),
+
   experience: z
     .array(
       z.object({
@@ -124,6 +126,7 @@ const validator = z.object({
       }),
     )
     .default([]),
+
   education: z
     .array(
       z.object({
@@ -135,6 +138,27 @@ const validator = z.object({
       }),
     )
     .default([]),
+
+  skills: z.array(z.string()).default([]),
+
+  projects: z
+    .array(
+      z.object({
+        name: z.string().default(""),
+        description: z.string().default(""),
+        tech: z.array(z.string()).default([]),
+        links: z
+          .array(
+            z.object({
+              label: z.string(),
+              url: z.string(),
+            }),
+          )
+          .default([]),
+      }),
+    )
+    .default([]),
+
   certifications: z
     .array(
       z.object({
@@ -144,7 +168,9 @@ const validator = z.object({
       }),
     )
     .default([]),
+
   languages: z.array(z.string()).default([]),
+
   interests: z.array(z.string()).default([]),
 });
 
